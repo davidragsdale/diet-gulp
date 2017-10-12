@@ -1,0 +1,16 @@
+{
+  "name": "diet-gulp",
+  "version": "1.0.0",
+  "description": "Similar to regular gulp, but more lightweight because it removes the ability to watch.",
+  "repository": "https://github.com/davidragsdale/diet-gulp.git",
+  "author": "Fusion Alliance",
+  "contributors": [
+    "David Ragsdale <dragsdale@fusionalliance.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "orchestrator": "^0.3.8",
+    "vinyl-fs": "^2.4.4"
+  }
+}
