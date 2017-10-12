@@ -8,7 +8,6 @@
     "David Ragsdale <dragsdale@fusionalliance.com>"
   ],
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "orchestrator": "^0.3.8",
     "vinyl-fs": "^2.4.4"
