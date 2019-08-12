@@ -1,21 +1,31 @@
 'use strict';
 
-const vinylFs = require('vinyl-fs');
-const util = require('util');
-const Orchestrator = require('orchestrator');
+var util = require('util');
+var Undertaker = require('undertaker');
+var vfs = require('vinyl-fs');
 
-const Gulp = function Gulp() {
-  Orchestrator.call(this);
-};
-util.inherits(Gulp, Orchestrator);
+function Gulp() {
+  Undertaker.call(this);
 
-Gulp.prototype.task = Gulp.prototype.add;
-Gulp.prototype.run = function run(...args) {
-  const tasks = args.length ? args : ['default'];
-  this.start(...tasks);
-};
-Gulp.prototype.dest = vinylFs.dest;
-Gulp.prototype.src = vinylFs.src;
+  // Bind the functions for destructuring
+  this.task = this.task.bind(this);
+  this.series = this.series.bind(this);
+  this.parallel = this.parallel.bind(this);
+  this.registry = this.registry.bind(this);
+  this.tree = this.tree.bind(this);
+  this.lastRun = this.lastRun.bind(this);
+  this.src = this.src.bind(this);
+  this.dest = this.dest.bind(this);
+  this.symlink = this.symlink.bind(this);
+}
+util.inherits(Gulp, Undertaker);
+
+Gulp.prototype.src = vfs.src;
+Gulp.prototype.dest = vfs.dest;
+Gulp.prototype.symlink = vfs.symlink;
+
+// Let people use this class from our instance
 Gulp.prototype.Gulp = Gulp;
 
-module.exports = new Gulp();
+var inst = new Gulp();
+module.exports = inst;
